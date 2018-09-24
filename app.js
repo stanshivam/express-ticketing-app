@@ -11,11 +11,15 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/loginapp');
+mongoose.set('useCreateIndex', true)
+mongoose.connect('mongodb://localhost/loginapp', { useNewUrlParser: true });
+
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var sellers = require('./routes/seller.route');
+var redeemers = require('./routes/redeemer.route');
 
 // Init App
 var app = express();
@@ -26,8 +30,9 @@ app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
-app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Set Static Folder
@@ -75,9 +80,11 @@ app.use(function (req, res, next) {
 });
 
 
-
+//Set Routes
 app.use('/', routes);
 app.use('/users', users);
+app.use('/sellers', sellers);
+app.use('/redeemers', redeemers);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
