@@ -10,6 +10,10 @@ router.get('/blank', function(req, res){
 	res.render('blank');
 });
 
+router.get('/login', function(req, res){
+	res.render('login');
+});
+
 // function ensureAuthenticated(req, res, next){
 // 	if(req.isAuthenticated()){
 // 		return next();
