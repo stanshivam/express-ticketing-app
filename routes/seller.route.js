@@ -13,4 +13,6 @@ router.get('/:id', seller_controller.seller_details);
 router.put('/:id/update', seller_controller.seller_update);
 router.delete('/:id/delete', seller_controller.seller_delete);
 
+router.get('/', seller_controller.list);
+
 module.exports = router;

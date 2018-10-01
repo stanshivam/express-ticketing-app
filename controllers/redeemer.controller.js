@@ -7,6 +7,16 @@ exports.redeemer_details = function (req, res, next) {
     })
 };
 
+exports.list = function (req, res) {
+    // res.send('Greetings from the Test controller!');
+    res.render('redeemers/redeemers_list');
+};
+
+exports.create = function (req, res) {
+    // res.send('Greetings from the Test controller!');
+    res.render('redeemers/redeemers_create');
+}
+
 exports.redeemer_create = function (req, res, next) {
     let redeemer = new Redeemer(
         {

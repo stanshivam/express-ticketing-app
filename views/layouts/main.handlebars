@@ -4,9 +4,11 @@
     <title>Bootstrap Admin Theme v3</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:3000/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="http://localhost:3000/css/styles.css" rel="stylesheet">
+
+    <link href="http://localhost:3000/vendors/datatables/dataTables.bootstrap.css" rel="stylesheet" media="screen">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +65,8 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                    <li><a href="calendar.html"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
+                    <li><a href="sellers"><i class="glyphicon glyphicon-calendar"></i> Sellers</a></li>
+                    <li><a href="redeemers"><i class="glyphicon glyphicon-calendar"></i> Redeemers</a></li>
                     <li><a href="stats.html"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
                     <li><a href="tables.html"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
                     <li><a href="buttons.html"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
@@ -102,8 +105,13 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="http://localhost:3000/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://localhost:3000/vendors/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="http://localhost:3000/vendors/datatables/dataTables.bootstrap.js"></script>
+    <script src="http://localhost:3000/js/tables.js"></script>
+    <script src="http://localhost:3000/js/custom.js"></script>
   </body>
 </html>

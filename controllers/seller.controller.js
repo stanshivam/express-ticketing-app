@@ -5,6 +5,11 @@ exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
 
+exports.list = function (req, res) {
+    // res.send('Greetings from the Test controller!');
+    res.render('sellers/sellers_list');
+};
+
 exports.seller_details = function (req, res, next) {
     Seller.findById(req.params.id, function (err, seller) {
         if (err) return next(err);
