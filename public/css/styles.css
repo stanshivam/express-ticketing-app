@@ -581,12 +581,6 @@ body {
 }
 
 /* custom css */
-.my-div {
-  background-color: #fff;
-  padding: 5px;
-  border-radius: 8px;
-  height: -webkit-fill-available;
-}
 
 
 /* Responsive CSS */
