@@ -17,6 +17,14 @@ exports.create = function (req, res) {
     res.render('redeemers/redeemers_create');
 }
 
+exports.addRedeemer = function (req, res) {
+    let redeemer = new Redeemer(
+        req.body
+    );
+    console.log(redeemer);
+    res.redirect('/redeemers/create');
+}
+
 exports.redeemer_create = function (req, res, next) {
     let redeemer = new Redeemer(
         {

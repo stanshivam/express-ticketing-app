@@ -11,6 +11,7 @@ const redeemer_controller = require('../controllers/redeemer.controller');
 
 router.get('/', redeemer_controller.list);
 router.get('/create', redeemer_controller.create);
+router.post('/create', redeemer_controller.addRedeemer);
 
 
 module.exports = router;
