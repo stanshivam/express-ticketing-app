@@ -20,6 +20,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var sellers = require('./routes/seller.route');
 var redeemers = require('./routes/redeemer.route');
+var buttons = require('./routes/buttons.route');
 
 // Init App
 var app = express();
@@ -85,6 +86,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/sellers', sellers);
 app.use('/redeemers', redeemers);
+app.use('/buttons', buttons);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
