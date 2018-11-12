@@ -10,7 +10,7 @@ const buttons_controller = require('../controllers/buttons.controller');
 // router.delete('/:id/delete', redeemer_controller.redeemer_delete);
 
 router.get('/', function(req, res) {
-    res.send('AYO!');
+    res.render('buttons/buttons');
 });
 
 

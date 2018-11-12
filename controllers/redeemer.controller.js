@@ -25,6 +25,41 @@ exports.create = function (req, res) {
         message: req.session.message
     });
     req.session.errors = null;
+    req.session.message = null;
+}
+
+exports.editRedeemer = function(req, res, next) {
+    Redeemer.findById(req.params.id, function (err, redeemer) {
+        if (err) return next(err);
+        console.log(redeemer);
+        res.render('redeemers/redeemers_edit', { "redeemer": redeemer });
+    })
+    
+}
+
+exports.updateRedeemer = function(req, res, next) {
+    const redeemerID = req.params.id;
+    console.log(req.body);
+    // Redeemer.findByIdAndUpdate(redeemerID, {$set: req.body}, function (err, redeemer) {
+    //     if (err) return next(err);
+    //     res.render('redeemers/redeemers_edit', { 'redeemer': redeemer });
+    // });
+
+    Redeemer.findOneAndUpdate({_id: redeemerID}, {$set:req.body}, {new: true}, (err, doc) => {
+        if (err) {
+            console.log("Something wrong when updating data!");
+        }
+        console.log(doc);
+        res.render('redeemers/redeemers_edit', { 'redeemer': doc });
+    });
+
+    // Redeemer.update({ '_id': redeemerID }, 
+    // { $set: req.body }, function(err, result) { 
+
+    //   if (err) return next(err);
+    //   console.log(result);
+    //   res.render('redeemers/redeemers_edit', { 'redeemer': result });
+    // }); 
 }
 
 exports.addRedeemer = function (req, res, next) {
@@ -53,6 +88,7 @@ exports.addRedeemer = function (req, res, next) {
         });
     }
     res.redirect('/redeemers/create');
+    req.session.errors
 }
 
 exports.redeemer_create = function (req, res, next) {

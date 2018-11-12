@@ -12,6 +12,7 @@ const redeemer_controller = require('../controllers/redeemer.controller');
 router.get('/', redeemer_controller.list);
 router.get('/create', redeemer_controller.create);
 router.post('/create', redeemer_controller.addRedeemer);
-
+router.get('/:id/edit', redeemer_controller.editRedeemer);
+router.post('/:id/edit', redeemer_controller.updateRedeemer);
 
 module.exports = router;
