@@ -1,12 +1,17 @@
 const Redeemer = require('../models/redeemer.model');
-
-exports.redeemer_details = function (req, res, next) {
-    Redeemer.findById(req.params.id, function (err, redeemer) {
-        if (err) return next(err);
-        res.send(redeemer);
-    })
-};
-
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+// https://coursework.vschool.io/mongoose-crud/
+//redeemer listing
 exports.list = function (req, res) {
     // res.send('Greetings from the Test controller!');
     Redeemer.find({}).exec(function(err, redeemers) {   
@@ -17,6 +22,7 @@ exports.list = function (req, res) {
     
 };
 
+//load create view
 exports.create = function (req, res) {
     // res.send('Greetings from the Test controller!');
     res.render('redeemers/redeemers_create', { 
@@ -28,18 +34,17 @@ exports.create = function (req, res) {
     req.session.message = null;
 }
 
+//load the edit view
 exports.editRedeemer = function(req, res, next) {
     Redeemer.findById(req.params.id, function (err, redeemer) {
         if (err) return next(err);
-        console.log(redeemer);
         res.render('redeemers/redeemers_edit', { "redeemer": redeemer });
     })
     
 }
-
+//update the redeemer
 exports.updateRedeemer = function(req, res, next) {
     const redeemerID = req.params.id;
-    console.log(req.body);
     // Redeemer.findByIdAndUpdate(redeemerID, {$set: req.body}, function (err, redeemer) {
     //     if (err) return next(err);
     //     res.render('redeemers/redeemers_edit', { 'redeemer': redeemer });
@@ -49,7 +54,6 @@ exports.updateRedeemer = function(req, res, next) {
         if (err) {
             console.log("Something wrong when updating data!");
         }
-        console.log(doc);
         res.render('redeemers/redeemers_edit', { 'redeemer': doc });
     });
 
@@ -62,6 +66,7 @@ exports.updateRedeemer = function(req, res, next) {
     // }); 
 }
 
+//Create new redeemer
 exports.addRedeemer = function (req, res, next) {
     let redeemer = new Redeemer(
         req.body
@@ -90,6 +95,22 @@ exports.addRedeemer = function (req, res, next) {
     res.redirect('/redeemers/create');
     req.session.errors
 }
+
+exports.deleteRedeemer = function (req, res, next) {
+    const redeemerID = req.params.id;
+    Redeemer.findOne({ _id: redeemerID }, function(err, redeemer) {
+        if (err) return next(err);
+        redeemer.remove();
+        Redeemer.find({}).exec(function(err, redeemers) {   
+            if (err) return next(err);
+            // res.send(redeemers);
+            res.redirect('/redeemers');
+        });
+    })
+}
+
+
+//CRUD api end points
 
 exports.redeemer_create = function (req, res, next) {
     let redeemer = new Redeemer(
@@ -140,4 +161,9 @@ exports.redeemer_delete = function (req, res) {
     })
 };
 
-
+exports.redeemer_details = function (req, res, next) {
+    Redeemer.findById(req.params.id, function (err, redeemer) {
+        if (err) return next(err);
+        res.send(redeemer);
+    })
+};

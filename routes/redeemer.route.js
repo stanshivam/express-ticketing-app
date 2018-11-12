@@ -14,5 +14,6 @@ router.get('/create', redeemer_controller.create);
 router.post('/create', redeemer_controller.addRedeemer);
 router.get('/:id/edit', redeemer_controller.editRedeemer);
 router.post('/:id/edit', redeemer_controller.updateRedeemer);
+router.get('/:id/delete', redeemer_controller.deleteRedeemer);
 
 module.exports = router;
