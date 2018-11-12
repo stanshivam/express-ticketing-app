@@ -1,9 +1,19 @@
 <h2 class="my-h2">Create Redeemer</h2>
+
 {{# if errors }}
-    {{# each errors }}
-          <p class="alert alert-danger">{{ this.msg }}</p>
-    {{/each}}
+  <p class="alert alert-danger">
+      {{# each errors }}
+            {{ this.msg }} </br>
+      {{/each}}
+  </p>
 {{/if}}
+
+{{# if message }}
+  <p class="alert alert-success">
+      {{ message }} </br>
+  </p>
+{{/if}}
+
 <form method="post" action="/redeemers/create">
 <div class="col-md-5">
   <div class="form-group">

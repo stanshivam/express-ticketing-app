@@ -14,7 +14,11 @@ exports.list = function (req, res) {
 
 exports.create = function (req, res) {
     // res.send('Greetings from the Test controller!');
-    res.render('redeemers/redeemers_create', { success: req.session.success, errors: req.session.errors });
+    res.render('redeemers/redeemers_create', { 
+        success: req.session.success, 
+        errors: req.session.errors,
+        message: req.session.message
+    });
     req.session.errors = null;
 }
 
@@ -32,8 +36,16 @@ exports.addRedeemer = function (req, res) {
     var errors = req.validationErrors();
     if (errors) {
         console.log(errors);
-		req.session.errors = errors;
+        req.session.errors = errors;
         req.session.success = false;
+    } else {
+        redeemer.save(function (err) {
+            if (err) {
+                return next(err);
+            }
+            req.session.success = true;
+            req.session.message = 'Redeemer Created Successfully!';
+        })
     }
     res.redirect('/redeemers/create');
 }
