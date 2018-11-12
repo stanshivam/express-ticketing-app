@@ -9,7 +9,12 @@ exports.redeemer_details = function (req, res, next) {
 
 exports.list = function (req, res) {
     // res.send('Greetings from the Test controller!');
-    res.render('redeemers/redeemers_list');
+    Redeemer.find({}).exec(function(err, redeemers) {   
+        if (err) throw err;
+        // res.send(redeemers);
+        res.render('redeemers/redeemers_list', {"redeemers": redeemers});
+    });
+    
 };
 
 exports.create = function (req, res) {
@@ -22,11 +27,10 @@ exports.create = function (req, res) {
     req.session.errors = null;
 }
 
-exports.addRedeemer = function (req, res) {
+exports.addRedeemer = function (req, res, next) {
     let redeemer = new Redeemer(
         req.body
     );
-    console.log(redeemer);
     // Validation
 	req.checkBody('name', 'Name is required').notEmpty();
 	req.checkBody('contact', 'Contact is required').notEmpty();
@@ -34,18 +38,19 @@ exports.addRedeemer = function (req, res) {
 	req.checkBody('email', 'Email is not valid').isEmail();
     req.checkBody('password', 'Password is required').notEmpty();
     var errors = req.validationErrors();
+    console.log(errors);
     if (errors) {
-        console.log(errors);
+        // console.log(errors);
         req.session.errors = errors;
         req.session.success = false;
     } else {
+        req.session.message = 'Redeemer Created Successfully !!';
+        // console.log(req);
         redeemer.save(function (err) {
             if (err) {
                 return next(err);
             }
-            req.session.success = true;
-            req.session.message = 'Redeemer Created Successfully!';
-        })
+        });
     }
     res.redirect('/redeemers/create');
 }
