@@ -6,12 +6,8 @@ router.get('/', function(req, res){
 	res.render('dashboard');
 });
 
-router.get('/blank', function(req, res){
-	res.render('blank');
-});
-
 router.get('/login', function(req, res){
-	res.render('login');
+	res.render('auth/login');
 });
 
 // function ensureAuthenticated(req, res, next){
