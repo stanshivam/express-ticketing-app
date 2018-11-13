@@ -1,6 +1,8 @@
   				<div class="panel-heading">
 					<h4>Redeemers List</h4>
-					<a href="/redeemers/create">Create Redeemers</a>
+					<button class="btn btn-success btn-xs">
+						<a style="color: #fff" href="/redeemers/create">Create Redeemers</a>
+					</button>
 				</div>
   				<div class="panel-body">
 					
@@ -25,8 +27,13 @@
 											<td>{{ this.contact }}</td>
 											<td class="center">{{ this.address }}</td>
 											<td class="center">
-												<a href="redeemers/{{ this._id }}/edit">Edit</a> |
-												<a href="redeemers/{{ this._id }}/delete">Delete</a>
+												<button type="submit" class="btn btn-primary btn-xs">
+													<a style="color: #fff" href="redeemers/{{ this._id }}/edit">Edit</a>
+												</button>
+												 
+												<button class="btn btn-danger btn-xs">
+													<a style="color: #fff" href="redeemers/{{ this._id }}/delete">Delete</a>
+												</button>
 											</td>
 										</tr>
 								{{/each}}
