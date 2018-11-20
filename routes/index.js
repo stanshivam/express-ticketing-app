@@ -12,6 +12,14 @@ router.get('/login', function(req, res){
 	res.render('auth/login', { title: 'my other page', layout: 'auth' });
 });
 
+router.get('/register', function(req, res){
+	res.render('auth/register', { title: 'my other page', layout: 'auth' });
+});
+
+router.post('/register', function(req, res){
+	res.send('start registeration here!!');
+});
+
 router.post('/login', function(req, res){
 	// res.render('auth/login');
 	console.log(req.body);
