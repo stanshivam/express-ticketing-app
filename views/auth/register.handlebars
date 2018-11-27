@@ -1,7 +1,10 @@
+
+
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="login-wrapper">
 			        <div class="box">
+						
 			            <div class="content-wrap">
 			                <h6>Sign Up</h6>
 			                <div class="social">
@@ -17,9 +20,22 @@
 	                                <hr class="right">
 	                            </div>
 	                        </div>
-							<form action="/register" method="POST">
-                                <input class="form-control" type="text" name="fname" placeholder="First Name">
-                                <input class="form-control" type="text" name="lname" placeholder="Last Name">
+							{{# if errors }}
+								<p class="alert alert-danger">
+									{{# each errors }}
+											{{ this.msg }} </br>
+									{{/each}}
+								</p>
+							{{/if}}
+
+							{{# if message }}
+								<p class="alert alert-success">
+									{{ message }} </br>
+								</p>
+							{{/if}}
+							<form action="/admin/register" method="POST">
+                                <input class="form-control" type="text" name="name" placeholder="Full Name">
+                                <input class="form-control" type="text" name="username" placeholder="Username">
 								<input class="form-control" name="email" type="text" placeholder="E-mail address">
 								<input class="form-control" name="password" type="password" placeholder="Password">
 								<input class="form-control" name="cpassword" type="password" placeholder="Confirm Password">
@@ -35,7 +51,7 @@
 
 			        <div class="already">
 			            <p>Don't have an account yet?</p>
-			            <a href="/login">Login</a>
+			            <a href="/admin/login">Login</a>
 			        </div>
 			    </div>
 			</div>
