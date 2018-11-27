@@ -17,10 +17,11 @@ mongoose.connect('mongodb://localhost/loginapp', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var sellers = require('./routes/seller.route');
-var redeemers = require('./routes/redeemer.route');
-var buttons = require('./routes/buttons.route');
+var usersRoutes = require('./routes/users');
+var sellersRoutes = require('./routes/seller.route');
+var redeemersRoutes = require('./routes/redeemer.route');
+var buttonsRoutes = require('./routes/buttons.route');
+var adminRoutes = require('./routes/admin.route');
 
 // Init App
 var app = express();
@@ -83,10 +84,11 @@ app.use(function (req, res, next) {
 
 //Set Routes
 app.use('/', routes);
-app.use('/users', users);
-app.use('/sellers', sellers);
-app.use('/redeemers', redeemers);
-app.use('/buttons', buttons);
+app.use('/users', usersRoutes);
+app.use('/sellers', sellersRoutes);
+app.use('/redeemers', redeemersRoutes);
+app.use('/buttons', buttonsRoutes);
+app.use('/admin', adminRoutes);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
