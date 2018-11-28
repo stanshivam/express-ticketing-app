@@ -6,6 +6,13 @@ router.get('/', ensureAuthenticated, function(req, res){
 	res.render('dashboard');
 });
 
+
+router.get('/logout', function (req, res) {
+	req.logout();
+	req.flash('success_msg', 'You are logged out');
+	res.redirect('/admin/login');
+});
+
 // router.get('/login', function(req, res){
 // 	// res.render('auth/login');
 // 	//while rendering the view we can specify the laout to be used

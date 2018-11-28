@@ -7,6 +7,7 @@ let RedeemerSchema = new Schema({
     address: { type: String },
     contact: {type: String, required: true},
     password: {type: String, required: true},
+    user: { type: Schema.ObjectId, ref: 'User', required: true }
 });
 
 

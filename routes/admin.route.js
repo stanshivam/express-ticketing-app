@@ -75,6 +75,7 @@ router.post('/register', function (req, res) {
 passport.use(new LocalStrategy(
 	function (username, password, done) {
 		Admin.getAdminByUsername(username, function (err, admin) {
+			console.log('inside admin route');
 			if (err) throw err;
 			if (!admin) {
 				return done(null, false, { message: 'Unknown Admin' });
@@ -91,8 +92,8 @@ passport.use(new LocalStrategy(
 	}
 ));
 
-passport.serializeUser(function (user, done) {
-	done(null, user.id);
+passport.serializeUser(function (admin, done) {
+	done(null, admin.id);
 });
 
 passport.deserializeUser(function (id, done) {
@@ -108,12 +109,10 @@ router.post('/login',
 		res.redirect('/');
 	});
 
-// router.get('/logout', function (req, res) {
-// 	req.logout();
-
-// 	req.flash('success_msg', 'You are logged out');
-
-// 	res.redirect('/users/login');
-// });
+router.get('/logout', function (req, res) {
+	req.logout();
+	req.flash('success_msg', 'You are logged out');
+	res.redirect('/users/login');
+});
 
 module.exports = router;

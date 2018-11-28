@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost/loginapp', { useNewUrlParser: true });
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
-var usersRoutes = require('./routes/users');
+// var usersRoutes = require('./routes/users');
 var sellersRoutes = require('./routes/seller.route');
 var redeemersRoutes = require('./routes/redeemer.route');
 var buttonsRoutes = require('./routes/buttons.route');
@@ -84,7 +84,7 @@ app.use(function (req, res, next) {
 
 //Set Routes
 app.use('/', routes);
-app.use('/users', usersRoutes);
+// app.use('/users', usersRoutes);
 app.use('/sellers', sellersRoutes);
 app.use('/redeemers', redeemersRoutes);
 app.use('/buttons', buttonsRoutes);
